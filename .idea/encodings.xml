@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice-common-eureka" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice-consumer-movie" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice-consumer-movie -ribbon" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice-consumer-movie-ribbon" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice-privider-user" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice-simple-privider-user" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservice-somple-privider-user" charset="UTF-8" />
+  </component>
+</project>

@@ -1,0 +1,16 @@
+server:
+  port: 8761
+eureka:
+  serviceUrl:
+    defaultZone: http://user:admin@localhost:8761/eureka
+      #defaultZone: http://localhost:8761/eureka
+  client:
+    fetch-registry: false
+    register-with-eureka: false #eureka 既是服务者也是提供者 将自己作为一个客户端
+spring:
+  application:
+    name: microservice-discovery-eureka
+  security:
+    user:
+      name: user
+      password: admin

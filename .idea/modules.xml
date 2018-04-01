@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/microservice-common-eureka/microservice-common-eureka.iml" filepath="$PROJECT_DIR$/microservice-common-eureka/microservice-common-eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservice-consumer-movie -ribbon/microservice-common-movie-ribbon.iml" filepath="$PROJECT_DIR$/microservice-consumer-movie -ribbon/microservice-common-movie-ribbon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservice-consumer-movie/microservice-consumer-movie.iml" filepath="$PROJECT_DIR$/microservice-consumer-movie/microservice-consumer-movie.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservice-consumer-movie-ribbon/microservice-consumer-movie-ribbon.iml" filepath="$PROJECT_DIR$/microservice-consumer-movie-ribbon/microservice-consumer-movie-ribbon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservice-privider-user/microservice-privider-user.iml" filepath="$PROJECT_DIR$/microservice-privider-user/microservice-privider-user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservice-simple-privider-user/microservice-simple-privider-user.iml" filepath="$PROJECT_DIR$/microservice-simple-privider-user/microservice-simple-privider-user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/springColud.iml" filepath="$PROJECT_DIR$/.idea/springColud.iml" />
+    </modules>
+  </component>
+</project>
