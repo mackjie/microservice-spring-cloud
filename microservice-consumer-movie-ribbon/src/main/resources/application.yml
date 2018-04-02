@@ -13,9 +13,16 @@ eureka:
     serviceUrl:
       defaultZone: http://user:admin@localhost:8761/eureka
   instance:
-    instance-id:  ${spring.application.name}:${spring.application.instance_id:${server.port}}}
+    instance-id:  ${spring.application.name}:${spring.application.instance_id:${server.port}}
     prefer-ip-address: true
+ribbon:
+  eureka:
+    enabled: true #是否在ribbon中禁用eureka
+  eager-load: true
 microservice-privider-user:
   ribbon:
-    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
-    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.BestAvailableRule
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.BestAvailableRule #负载均衡:高可用
+    listOfServers: http://localhost:9021/ #禁用eureka,配置rubbon能访问的服务节点,多个以“，”隔开
+stores:
+  ribbon:
+    listOfServers: http://localhost:9021/
