@@ -7,6 +7,7 @@ import com.whl.cloud.microservicesimpleprivideruser.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 
@@ -15,6 +16,7 @@ import java.util.List;
 
     @RestController
     @RequestMapping("/user")
+    @RefreshScope
     public class UserController {
 
         @Resource
@@ -33,8 +35,8 @@ import java.util.List;
         }
 
         @GetMapping("/getUser")
-        public User getUser(User user){
-            return userRepository.getOne(user.getUserId());
+        public User getUser(Long userId){
+            return userRepository.getOne(userId);
     }
 
         @GetMapping("/eureka-instance")
@@ -47,4 +49,11 @@ import java.util.List;
         public ServiceInstance serviceInfo(){
             return eurekaDiscoveryClient.getLocalServiceInstance();
         }
+
+        @PostMapping("/addUser")
+        public String addUser(@RequestBody User user){
+            userRepository.save(user);
+            return "保存成功";
+        }
+
 }
