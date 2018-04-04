@@ -1,4 +1,3 @@
-
 server:
   port: 9023
 #user:
@@ -26,6 +25,34 @@ microservice-privider-user:
 stores:
   ribbon:
     listOfServers: localhost:9021  #允许ribbon加载的url集合
+# To disable Hystrix in Feign
 feign:
   hystrix:
     enabled: true
+  client:
+      config:
+        default:
+          connectTimeout: 5000  #请求连接超时时间
+          readTimeout: 5000
+          loggerLevel: full     #日志级别：basic、none、header、full
+# To set thread isolation to SEMAPHORE 将线程隔离设置为SEMAPHORE
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: SEMAPHORE
+zuul:         #路由器和过滤器配置
+  routes:
+    users:    #让zuul方向代理微服务，路径是/user/** users只要是唯一的就行，可随意写
+      path: /user/**      #url配置
+      url: microservice-privider-user  #发现的服务名称
+      sensitiveHeaders: Cookie,Set-Cookie,Authorization #设置敏感的标题（现在的值为默认）
+      stripPrefix: false #是否携带前缀
+  #ignored-services: '*' #除了配置的路由以外其他全部被忽略
+endpoints:      #路由端点列表  /routes GET:返回所有映射路由的列表，POST：强制刷新现在的路由列表
+  routes:
+    enabled: true
+management:     #免认证登录
+  security:
+    enabled: false

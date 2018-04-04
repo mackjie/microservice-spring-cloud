@@ -1,5 +1,6 @@
 package com.whl.cloud.microservicesimplecconsumermovie.service;
 
+import com.whl.cloud.microservicesimplecconsumermovie.config.UserClientConfig;
 import com.whl.cloud.microservicesimplecconsumermovie.entity.User;
 import com.whl.cloud.microservicesimplecconsumermovie.hystrix.UserRemoteHystrix;
 import org.springframework.cloud.netflix.feign.FeignClient;
@@ -16,7 +17,7 @@ import java.util.List;
  * name:请求Eureka中注册的服务名称
  *  fallbackFactory：可以获取操作异常原因
  */
-@FeignClient(name="microservice-privider-user",fallbackFactory = UserRemoteHystrix.class )
+@FeignClient(name="microservice-privider-user",configuration = UserClientConfig.class,fallbackFactory = UserRemoteHystrix.class )
 public interface UserClient {
 
     /* *   

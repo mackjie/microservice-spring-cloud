@@ -18,14 +18,14 @@ import java.util.List;
 
 /* *
  * @author --吴豪磊--
- * @date 2018/4/2 17:37  
- * @param   
- * @return   
+ * @date 2018/4/2 17:37
+ * @param
+ * @return
  * TODO
  * @Description:
  */
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/user1")
 public class UserController {
 
     @Autowired

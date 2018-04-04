@@ -50,10 +50,31 @@ import java.util.List;
             return eurekaDiscoveryClient.getLocalServiceInstance();
         }
 
+        /* *
+         * @author --吴豪磊--
+         * @date 2018/4/4 15:42  
+         * @param [user]  
+         * @return java.lang.String  
+         * TODO
+         * @Description: 使用feign方式进行请求处理操作
+         */
         @PostMapping("/addUser")
-        public String addUser(@RequestBody User user){
+        public String addUserFeign(@RequestBody User user){
             userRepository.save(user);
             return "保存成功";
         }
 
+        /* *
+         * @author --吴豪磊--
+         * @date 2018/4/4 15:41
+         * @param [user]  
+         * @return java.lang.String  
+         * TODO
+         * @Description: 使用路由方式进行请求处理
+         */
+        @PostMapping("/addUserZuul")
+        public String addUserZuul(User user){
+            userRepository.save(user);
+            return "保存成功";
+        }
 }
