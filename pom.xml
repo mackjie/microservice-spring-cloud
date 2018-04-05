@@ -14,6 +14,7 @@
 		<module>microservice-common-eureka</module>
 		<module>microservice-consumer-movie-ribbon</module>
 		<module>microservice-simple-privider-user</module>
+		<module>microservice-gateway-zuul</module>
 	</modules>
 
 	<parent>

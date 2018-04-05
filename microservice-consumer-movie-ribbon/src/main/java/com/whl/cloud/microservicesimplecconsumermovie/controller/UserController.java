@@ -25,7 +25,7 @@ import java.util.List;
  * @Description:
  */
 @RestController
-@RequestMapping("/user1")
+@RequestMapping("/movie")
 public class UserController {
 
     @Autowired
@@ -46,7 +46,7 @@ public class UserController {
         return user;
     }
 
-    @GetMapping("/findUser")
+    @GetMapping("/getallUser")
     public List<User> findUser(){
         List<User> list = userClient.getallUser();
         return list;

@@ -16,7 +16,6 @@ import org.springframework.web.client.RestTemplate;
 @EnableFeignClients	  	//启动Feign
 @EnableCircuitBreaker 	//启动断路器
 @EnableHystrixDashboard //启动Hystrix仪表板
-@EnableZuulProxy        //启用嵌入式Zuul反向代理
 public class MicroserviceSimplecConsumerMovieRibbonApplication {
 
 	@Bean
