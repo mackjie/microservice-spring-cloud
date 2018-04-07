@@ -25,7 +25,7 @@ import java.util.List;
  * @Description:
  */
 @RestController
-@RequestMapping("/movie")
+@RequestMapping("/movie-ribbon")
 public class UserController {
 
     @Autowired

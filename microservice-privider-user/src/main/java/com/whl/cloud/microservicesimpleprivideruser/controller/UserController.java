@@ -14,67 +14,68 @@ import org.springframework.cloud.client.discovery.DiscoveryClient;
 import javax.annotation.Resource;
 import java.util.List;
 
-    @RestController
-    @RequestMapping("/user")
-    @RefreshScope
-    public class UserController {
+@RestController
+@RequestMapping("/user")
+@RefreshScope
+public class UserController {
 
-        @Resource
-        private UserRepository userRepository;
+    @Resource
+    private UserRepository userRepository;
 
-        @Autowired
-        private DiscoveryClient eurekaDiscoveryClient;
+    @Autowired
+    private DiscoveryClient eurekaDiscoveryClient;
 
-        @Qualifier("eurekaClient")
-        @Autowired
-        private EurekaClient eurekaClient;
+    @Qualifier("eurekaClient")
+    @Autowired
+    private EurekaClient eurekaClient;
 
-        @GetMapping("/getallUser")
-        public List<User> getUserPage(){
-            return userRepository.findAll();
-        }
-
-        @GetMapping("/getUser")
-        public User getUser(Long userId){
-            return userRepository.getOne(userId);
+    @GetMapping("/getallUser")
+    public List<User> getUserPage(){
+        return userRepository.findAll();
     }
 
-        @GetMapping("/eureka-instance")
-        public String serviceUrl() {
-            InstanceInfo instance = eurekaClient.getNextServerFromEureka("MICROSERVICE-PRIVIDER-USER", false);
-            return instance.getHomePageUrl();
-        }
+    @GetMapping("/getUser")
+    public User getUser(Long userId){
+        return userRepository.getOne(userId);
+}
 
-        @GetMapping("/eureka-info")
-        public ServiceInstance serviceInfo(){
-            return eurekaDiscoveryClient.getLocalServiceInstance();
-        }
+    @GetMapping("/eureka-instance")
+    public String serviceUrl() {
+        InstanceInfo instance = eurekaClient.getNextServerFromEureka("MICROSERVICE-PRIVIDER-USER", false);
+        return instance.getHomePageUrl();
+    }
 
-        /* *
-         * @author --吴豪磊--
-         * @date 2018/4/4 15:42  
-         * @param [user]  
-         * @return java.lang.String  
-         * TODO
-         * @Description: 使用feign方式进行请求处理操作
-         */
-        @PostMapping("/addUser")
-        public String addUserFeign(@RequestBody User user){
-            userRepository.save(user);
-            return "保存成功";
-        }
+    @GetMapping("/eureka-info")
+    public ServiceInstance serviceInfo(){
+        return eurekaDiscoveryClient.getLocalServiceInstance();
+    }
 
-        /* *
-         * @author --吴豪磊--
-         * @date 2018/4/4 15:41
-         * @param [user]  
-         * @return java.lang.String  
-         * TODO
-         * @Description: 使用路由方式进行请求处理
-         */
-        @PostMapping("/addUserZuul")
-        public String addUserZuul(User user){
-            userRepository.save(user);
-            return "保存成功";
-        }
+    /* *
+     * @author --吴豪磊--
+     * @date 2018/4/4 15:42
+     * @param [user]
+     * @return java.lang.String
+     * TODO
+     * @Description: 使用feign方式进行请求处理操作
+     */
+    @PostMapping("/addUser")
+    public String addUserFeign(@RequestBody User user){
+        userRepository.save(user);
+        return "保存成功";
+    }
+
+    /* *
+     * @author --吴豪磊--
+     * @date 2018/4/4 15:41
+     * @param [user]
+     * @return java.lang.String
+     * TODO
+     * @Description: 使用路由方式进行请求处理
+     */
+    @PostMapping("/addUserZuul")
+    public String addUserZuul(User user){
+        userRepository.save(user);
+        return "保存成功";
+    }
+
 }

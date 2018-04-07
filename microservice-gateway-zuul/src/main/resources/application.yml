@@ -18,16 +18,28 @@ zuul:         #路由器和过滤器配置
       path: /user/**      #url配置
       serviceId: microservice-privider-user  #发现的服务名称
       sensitiveHeaders: Cookie,Set-Cookie,Authorization #设置敏感的标题（现在的值为默认）
-      stripPrefix: false #是否携带前缀
+      stripPrefix: false #局部是否携带前缀
+    movies-ribbon:
+      path: /movie-ribbon/**
+      serviceId: microservice-customer-movie-ribbon
+      #url: forward:/movies  #转发到/movies
+      sensitiveHeaders: Cookie,Set-Cookie,Authorization #设置敏感的标题（现在的值为默认）
+      stripPrefix: false #局部是否携带前缀
     movies:
       path: /movie/**
-      serviceId: microservice-customer-movie-ribbon
-      sensitiveHeaders: Cookie,Set-Cookie,Authorization #设置敏感的标题（现在的值为默认）
-      stripPrefix: false #是否携带前缀
-  #ignored-services: '*' #除了配置的路由以外其他全部被忽略
-ribbon:           #禁用ribbon中的eureka
+      serviceId:  microservice-web-service
+      stripPrefix: false
+    legacy:     #除配置的路由以外其他全部匹配
+      path: /**
+      url: www.baidu.com
+  #strip-prefix: false #全局携带前缀
+  #prefix: /api  #全局携带前缀
+  ignored-services: "/**/view/**" #除了配置的路由以外其他全部被忽略
+ribbon:           #
   eureka:
-    eable: false
+    enabled: true
+#  ConnectTimeout: 3000
+#  ReadTimeout: 60000
 microservice-privider-user:   #服务器端配置负载均衡
   ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule #随机 支持多种负载均衡：轮询、随机、RoundRobinRule、高可用等
@@ -37,6 +49,8 @@ hystrix:
   command:
     default:
       execution:
+        thread:
+          timeoutInMilliseconds: 60000
         isolation:
           strategy: SEMAPHORE
 endpoints:      #路由端点列表  /routes GET:返回所有映射路由的列表，POST：强制刷新现在的路由列表
@@ -45,6 +59,6 @@ endpoints:      #路由端点列表  /routes GET:返回所有映射路由的列�
 management:     #免认证登录
   security:
     enabled: false
-logging:
+logging:        #日志级别
   level:
     com.netfilx: debug
