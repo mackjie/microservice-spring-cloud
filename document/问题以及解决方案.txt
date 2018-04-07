@@ -1,0 +1,2 @@
+1、zull不能进行页面转发否则静态文件路径找不到
+2、feign请求参数传递方式：Map<String,Object>、RequestBody、@RequestParam

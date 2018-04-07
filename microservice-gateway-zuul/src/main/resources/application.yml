@@ -14,7 +14,7 @@ spring:
     name: microservice-gateway-zuul
 zuul:         #路由器和过滤器配置
   routes:
-    users:    #让zuul方向代理微服务，路径是/user/** users只要是唯一的就行，可随意写
+    users:    #让zuul方向代理微服务，路径是/user/** users只要是唯一的就行(路由Id)，可随意写
       path: /user/**      #url配置
       serviceId: microservice-privider-user  #发现的服务名称
       sensitiveHeaders: Cookie,Set-Cookie,Authorization #设置敏感的标题（现在的值为默认）
