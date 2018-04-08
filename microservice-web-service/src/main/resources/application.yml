@@ -1,0 +1,23 @@
+server:
+  port: 9022
+user:
+  urlPath: http://localhost:9021/
+spring:
+  application:
+    name: microservice-web-service
+  thymeleaf:
+    prefix: classpath:/templates/page
+    cache: false
+  http:
+    multipart:
+      max-file-size: 1000MB #上传文件最大限制
+      max-request-size: 2500MB  #请求最大限制
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: http://user:admin@localhost:8761/eureka
+  instance:
+    instance-id:  ${spring.application.name}:${spring.application.instance_id:${server.port}}}
+    prefer-ip-address: true
