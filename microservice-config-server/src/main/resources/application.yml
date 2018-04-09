@@ -1,0 +1,37 @@
+server:
+  port: 8888
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: http://user:admin@localhost:8761/eureka
+  instance:
+    instance-id:  ${spring.application.name}:${spring.application.instance_id:${server.port}}}
+    prefer-ip-address: true
+spring:
+  application:
+    name: microservice-config-server
+  cloud:
+    config:
+      server:
+        default-application-name: config-server
+        git:        #配置git仓库地址
+          uri: https://github.com/mackjie/microservice-spring-cloud.git
+          search-paths: microservice-config-repo/config    #项目路径下的某个文件夹  文件中配置公共部分
+          username: whl1789015971@163.com
+          password: 159936018926w6h5l
+        health:                   #查看配置库健康状况是否正常
+          repositories:
+            a-dev:        #仓库唯一标识 可随意写
+              label: master
+              name: application
+              profiles: dev       #访问地址：localhost:8088/application-dev/master        application-dev:仓库文件名
+            a-test:        #仓库唯一标识
+              label: master
+              name: application
+              profiles: test       #访问地址：localhost:8088/application-test/master        application-test:仓库文件名
+            a-prod:        #仓库唯一标识
+              label: master
+              name: application
+              profiles: prod       #访问地址：localhost:8088/application-prod/master        application-prod:仓库文件名
