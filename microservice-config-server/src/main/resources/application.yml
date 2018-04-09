@@ -27,11 +27,3 @@ spring:
               label: master
               name: application
               profiles: dev       #访问地址：localhost:8088/application-dev/master        application-dev:仓库文件名
-            a-test:        #仓库唯一标识
-              label: master
-              name: application
-              profiles: test       #访问地址：localhost:8088/application-test/master        application-test:仓库文件名
-            a-prod:        #仓库唯一标识
-              label: master
-              name: application
-              profiles: prod       #访问地址：localhost:8088/application-prod/master        application-prod:仓库文件名
