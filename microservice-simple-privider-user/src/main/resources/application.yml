@@ -16,6 +16,14 @@ spring:
       ddl-auto: none
   application:
     name: microservice-privider-user
+  cloud:
+    config:
+      profile: dev
+      #uri: http://localhost:8888/ # http://localhost:8088/   microservice-config-server
+      label: master
+      discovery:
+        service-id: microservice-config-server #发现的配置服务名称 建议使用
+  #profiles: dev,test,prod  #默认使用 ${spring.application.name}-${profiles}
 logging:
   level:
     root: info

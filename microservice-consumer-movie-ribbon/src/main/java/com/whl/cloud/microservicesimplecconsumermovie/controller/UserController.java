@@ -4,6 +4,7 @@ import com.whl.cloud.microservicesimplecconsumermovie.entity.User;
 import com.whl.cloud.microservicesimplecconsumermovie.service.UserClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +34,14 @@ public class UserController {
 
     @Resource
     private UserClient userClient;
+
+    @Value("${profile}")
+    private String profile;
+
+    @GetMapping("/profile")
+    public String  profile(){
+        return this.profile;
+    }
 
     @GetMapping("/allUser")
     private List<User> getAllUser(){
