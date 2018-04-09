@@ -1,2 +1,13 @@
 1、zull不能进行页面转发否则静态文件路径找不到
 2、feign请求参数传递方式：Map<String,Object>、RequestBody、@RequestParam
+流：
+3、输入输出流都是相对于程序而言，都是站在程序角度来说的
+4、FileInputStream、FileOutputStream、FileReader、FileWriter针对文件进行的读写操作
+5、转换流:InputStreamReader、OutputStreamWriter把字节流转换为字符流
+线程池：
+//创建可缓存线程池：当线程池大小小于执行的线程数量，就会回收一部分空闲的线程（60s无执行），当有新的任务来时，又只能添加新线程执行
+newCachedThreadPool
+//创建固定大小线程池: 如果执行的线程大于指定的线程数量就会进行处于等待状态 ，等待前面线程完成后才会执行
+newFixedThreadPool
+//单任务线程：只创建一个线程
+newSingleThreadExecutor

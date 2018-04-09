@@ -6,6 +6,7 @@ import com.whl.cloud.microservicesimpleprivideruser.entity.User;
 import com.whl.cloud.microservicesimpleprivideruser.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +29,14 @@ public class UserController {
     @Qualifier("eurekaClient")
     @Autowired
     private EurekaClient eurekaClient;
+
+    @Value("${profile}")
+    private String profile;
+
+    @GetMapping("/profile")
+    public String  profile(){
+        return this.profile;
+    }
 
     @GetMapping("/getallUser")
     public List<User> getUserPage(){

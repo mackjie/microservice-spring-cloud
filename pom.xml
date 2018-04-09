@@ -15,6 +15,7 @@
 		<module>microservice-consumer-movie-ribbon</module>
 		<module>microservice-simple-privider-user</module>
 		<module>microservice-gateway-zuul</module>
+		<module>microservice-config-server</module>
 	</modules>
 
 	<parent>
