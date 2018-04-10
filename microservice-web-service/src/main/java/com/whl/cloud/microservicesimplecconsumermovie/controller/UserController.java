@@ -4,6 +4,7 @@ import com.whl.cloud.microservicesimplecconsumermovie.entity.User;
 import com.whl.cloud.microservicesimplecconsumermovie.utils.UploadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -14,6 +15,7 @@ import java.util.Map;
 
 @Controller  //注意这里必须为Controller
 @RequestMapping("/movie")
+@RefreshScope
 public class UserController {
 
     @Value("${user.urlPath}")
@@ -21,6 +23,15 @@ public class UserController {
 
     @Autowired
     private RestTemplate restTemplate;
+
+    @Value("${profile}")
+    private String profile;
+
+    @GetMapping("/profile")
+    @ResponseBody
+    public String  profile(){
+        return this.profile;
+    }
 
     @RequestMapping("/allUser")
     @ResponseBody

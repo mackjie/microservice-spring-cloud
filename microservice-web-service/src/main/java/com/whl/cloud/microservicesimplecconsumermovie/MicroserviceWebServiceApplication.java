@@ -8,7 +8,7 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableEurekaClient
-public class MicroserviceSimplecConsumerMovieApplication {
+public class MicroserviceWebServiceApplication {
 
 	@Bean
 	public RestTemplate restTemplate(){
@@ -16,6 +16,6 @@ public class MicroserviceSimplecConsumerMovieApplication {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(MicroserviceSimplecConsumerMovieApplication.class, args);
+		SpringApplication.run(MicroserviceWebServiceApplication.class, args);
 	}
 }

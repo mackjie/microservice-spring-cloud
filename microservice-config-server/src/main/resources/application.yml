@@ -22,15 +22,29 @@ spring:
           username:             #共有可不填写 私有需要进行填写
           password:
         health:                   #查看配置库健康状况是否正常
-          repositories:
-            a-dev:        #仓库唯一标识 可随意写
+          repositories:           #访问地址：localhost:8088/application-dev/master        application-dev:仓库文件名
+            a-dev:                #仓库唯一标识 可随意写
               label: master
               name: application
-              profiles: dev       #访问地址：localhost:8088/application-dev/master        application-dev:仓库文件名
-encrypt:
+              profiles: dev
+    bus:
+      enabled: true
+      trace:
+        enabled: true
+  rabbitmq:
+    host: localhost
+    username: guest
+    port: 5672
+    password: guest
+    connection-timeout: 6000000
+#    dynamic: false
+management:
+  security:
+    enabled: false
+#encrypt:
 #  key-store:
 #    alias: mytestkey
 #    location: classpath:/server.jks
-#    password: letmein
-#    secret: changeme
-  key: mykey
+#    password: root
+#    secret: root
+#  key: whl

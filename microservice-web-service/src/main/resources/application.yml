@@ -7,7 +7,7 @@ spring:
     name: microservice-web-service
   cloud:
     config:
-      profile: dev
+      profile: test
       #uri: http://localhost:8888/ # http://localhost:8088/   microservice-config-server
       label: master
       discovery:
@@ -29,3 +29,4 @@ eureka:
   instance:
     instance-id:  ${spring.application.name}:${spring.application.instance_id:${server.port}}}
     prefer-ip-address: true
+
