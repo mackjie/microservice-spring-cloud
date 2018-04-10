@@ -19,11 +19,18 @@ spring:
         git:        #配置git仓库地址
           uri: https://github.com/mackjie/microservice-spring-cloud.git
           search-paths: microservice-config-repo/config    #项目路径下的某个文件夹  文件中配置公共部分
-          username: whl1789015971@163.com
-          password: 159936018926w6h5l
+          username:             #共有可不填写 私有需要进行填写
+          password:
         health:                   #查看配置库健康状况是否正常
           repositories:
             a-dev:        #仓库唯一标识 可随意写
               label: master
               name: application
               profiles: dev       #访问地址：localhost:8088/application-dev/master        application-dev:仓库文件名
+encrypt:
+#  key-store:
+#    alias: mytestkey
+#    location: classpath:/server.jks
+#    password: letmein
+#    secret: changeme
+  key: mykey
