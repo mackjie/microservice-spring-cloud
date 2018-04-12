@@ -7,3 +7,4 @@ install the RabbitMQ Server before you have to install the Erlang software (http
 3、install Mysql database<br>
 4、udpate the project connect database data use your local Mysql username and password then execute the project sql in Resource data.sql and schema.sql<br>
 5、run the project<br>
+Please order by microservice-common-eureka->microservice-config-server->...
