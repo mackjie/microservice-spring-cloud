@@ -1,6 +1,8 @@
 package com.whl.cloud.microservicesimpleprivideruser.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -9,7 +11,7 @@ import java.math.BigDecimal;
 @Entity
 @Table(name="TM_USER")
 @JsonIgnoreProperties(value={"hibernateLazyInitializer","handler","fieldHandler"})
-public class User implements Serializable, Cloneable {
+public class User implements Serializable, Cloneable,InitializingBean,DisposableBean {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -77,5 +79,15 @@ public class User implements Serializable, Cloneable {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    @Override
+    public void destroy() throws Exception {
+
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+
     }
 }

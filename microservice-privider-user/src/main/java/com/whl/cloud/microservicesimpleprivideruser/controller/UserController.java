@@ -3,7 +3,10 @@ package com.whl.cloud.microservicesimpleprivideruser.controller;
 import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;
 import com.whl.cloud.microservicesimpleprivideruser.entity.User;
+import com.whl.cloud.microservicesimpleprivideruser.entity.UserProcedure;
+import com.whl.cloud.microservicesimpleprivideruser.repository.UserProcedureRepository;
 import com.whl.cloud.microservicesimpleprivideruser.repository.UserRepository;
+import oracle.jdbc.OracleResultSet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 
 import javax.annotation.Resource;
+import java.sql.ResultSet;
 import java.util.List;
 
 @RestController
@@ -22,6 +26,9 @@ public class UserController {
 
     @Resource
     private UserRepository userRepository;
+
+    @Resource
+    private UserProcedureRepository userProcedureRepository;
 
     @Autowired
     private DiscoveryClient eurekaDiscoveryClient;
@@ -87,4 +94,11 @@ public class UserController {
         return "保存成功";
     }
 
+    @PostMapping("/procedureTest")
+    public List<UserProcedure> procedureTest(Integer salary,String uName){
+        List<UserProcedure> list1 = userProcedureRepository.findAll();
+        String yearSalary = userProcedureRepository.getYearSalary(uName);
+        ResultSet resultSet= userProcedureRepository.getAllUser(salary);
+        return list1;
+    }
 }
